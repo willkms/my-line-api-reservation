@@ -18,6 +18,10 @@ const lineBot = (req,res) => {
    res.status(200).end();
    const events = req.body.events;
    const promises = [];
+
+   console.log(events);
+   console.log(promises);
+
    for(let i=0;i<events.length;i++){
          const ev = events[i];
          switch(ev.type){
