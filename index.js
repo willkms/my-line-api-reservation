@@ -10,58 +10,39 @@ const config = {
 
 const client = new line.Client(config);
 
-// app
-//    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
-//    .listen(PORT,()=>console.log(`Listening on ${PORT}`));
+app
+   .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
+   .listen(PORT,()=>console.log(`Listening on ${PORT}`));
 
-// const lineBot = (req,res) => {
-//    res.status(200).end();
-//    const events = req.body.events;
-//    const promises = [];
+const lineBot = (req,res) => {
+   res.status(200).end();
+   const events = req.body.events;
+   const promises = [];
 
-//    console.log(events);
-//    console.log(promises);
+   console.log("イベント配列", events);
 
-//    for(let i=0;i<events.length;i++){
-//          const ev = events[i];
-//          switch(ev.type){
-//             case 'follow':
-//                promises.push(greeting_follow(ev));
-//                break;
-//          }
-//    }
-//    Promise
-//          .all(promises)
-//          .then(console.log('all promises passed'))
-//          .catch(e=>console.error(e.stack));
-// }
+   for(let i=0;i<events.length;i++){
+         const ev = events[i];
 
-// const greeting_follow = async (ev) => {
-//    const profile = await client.getProfile(ev.source.userId);
-//    return client.replyMessage(ev.replyToken,{
-//        "type":"text",
-//        "text":`${profile.displayName}さん、フォローありがとうございます\uDBC0\uDC04`
-//    });
-// }
+         console.log("イベント要素", ev);
 
-app.post('/hook', line.middleware(config), (req, res) => {
+         switch(ev.type){
+            case 'follow':
+               promises.push(greeting_follow(ev));
+               break;
+         }
+   }
    Promise
-     .all(req.body.events.map(handleEvent))
-     .then((result) => res.json(result));
- });
+         .all(promises)
+         .then(console.log('all promises passed'))
+         .catch(e=>console.error(e.stack));
+}
 
-function handleEvent(event) {
-  if (event.type == 'follow') {
-   promises.push(greeting_follow(event));
-  }
-
-  const greeting_follow = async (ev) => {
+const greeting_follow = async (ev) => {
    const profile = await client.getProfile(ev.source.userId);
    return client.replyMessage(ev.replyToken,{
        "type":"text",
        "text":`${profile.displayName}さん、フォローありがとうございます\uDBC0\uDC04`
    });
 }
-}
 
-app.listen(PORT,()=>console.log(`Listening on ${PORT}`));
