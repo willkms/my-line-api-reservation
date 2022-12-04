@@ -30,7 +30,13 @@ const lineBot = (req,res) => {
             case 'follow':
                promises.push(greeting_follow(ev));
                break;
+
+            case 'message':
+               promises.push(handleMessageEvent(ev));
+               break;
          }
+
+         
    }
    Promise
          .all(promises)
@@ -46,3 +52,12 @@ const greeting_follow = async (ev) => {
    });
 }
 
+const handleMessageEvent = async (ev) => {
+   const profile = await client.getProfile(ev.source.userId);
+   const text = (ev.message.type === 'text') ? ev.message.text : '';
+   
+   return client.replyMessage(ev.replyToken,{
+       "type":"text",
+       "text":`${profile.displayName}さん、今${text}って言いました？`
+   });
+}
