@@ -259,7 +259,12 @@ const handlePostbackEvent = async (ev) => {
       const orderedMenu = splitData[1];
       const selectedDate = ev.postback.params.date;
       askTime(ev,orderedMenu,selectedDate);
-  }
+  }else if(splitData[0] === 'time'){
+   const orderedMenu = splitData[1];
+   const selectedDate = splitData[2];
+   const selectedTime = splitData[3];
+   confirmation(ev,orderedMenu,selectedDate,selectedTime);
+}
 }
 
 const askDate = (ev,orderedMenu) => {
@@ -485,3 +490,53 @@ const askTime = (ev,orderedMenu,selectedDate) => {
        }
    });
 }
+
+const confirmation = (ev,menu,date,time) => {
+   const splitDate = date.split('-');
+   const selectedTime = 9 + parseInt(time);
+   
+   return client.replyMessage(ev.replyToken,{
+     "type":"flex",
+     "altText":"menuSelect",
+     "contents":
+     {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "次回予約はXXXXでよろしいですか？",
+            "wrap": true
+          },
+          {
+            "type": "separator"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "postback",
+              "label": "はい",
+              "data": "yes&${menu}&${date}&${time}"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "postback",
+              "label": "いいえ",
+              "data": "no&${menu}&${date}&${time}"
+            }
+          }
+        ]
+      }
+    }
+   });
+  }
