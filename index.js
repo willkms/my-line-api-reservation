@@ -259,12 +259,12 @@ const handlePostbackEvent = async (ev) => {
       const orderedMenu = splitData[1];
       const selectedDate = ev.postback.params.date;
       askTime(ev,orderedMenu,selectedDate);
-  }else if(splitData[0] === 'time'){
-   const orderedMenu = splitData[1];
-   const selectedDate = splitData[2];
-   const selectedTime = splitData[3];
-   confirmation(ev,orderedMenu,selectedDate,selectedTime);
-}
+   }else if(splitData[0] === 'time'){
+      const orderedMenu = splitData[1];
+      const selectedDate = splitData[2];
+      const selectedTime = splitData[3];
+      confirmation(ev,orderedMenu,selectedDate,selectedTime);
+   }
 }
 
 const askDate = (ev,orderedMenu) => {
@@ -294,7 +294,7 @@ const askDate = (ev,orderedMenu) => {
                "action": {
                  "type": "datetimepicker",
                  "label": "希望日を選択する",
-                 "data": "date&${orderedMenu}",
+                 "data": `date&${orderedMenu}`,
                  "mode": "date"
                }
              }
@@ -343,7 +343,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "9時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&0"
+                         "data": `time&${orderedMenu}&${selectedDate}&0`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -353,7 +353,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "10時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&1"
+                         "data": `time&${orderedMenu}&${selectedDate}&1`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -363,7 +363,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "11時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&2"
+                         "data": `time&${orderedMenu}&${selectedDate}&2`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -380,7 +380,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "12時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&3"
+                         "data": `time&${orderedMenu}&${selectedDate}&3`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -390,7 +390,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "13時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&4"
+                         "data": `time&${orderedMenu}&${selectedDate}&4`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -400,7 +400,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "14時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&5"
+                         "data": `time&${orderedMenu}&${selectedDate}&5`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -417,7 +417,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "15時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&6"
+                         "data": `time&${orderedMenu}&${selectedDate}&6`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -427,7 +427,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "16時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&7"
+                         "data": `time&${orderedMenu}&${selectedDate}&7`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -437,7 +437,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "17時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&8"
+                         "data": `time&${orderedMenu}&${selectedDate}&8`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -454,7 +454,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "18時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&9"
+                         "data": `time&${orderedMenu}&${selectedDate}&9`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -464,7 +464,7 @@ const askTime = (ev,orderedMenu,selectedDate) => {
                        "action": {
                          "type": "postback",
                          "label": "19時~",
-                         "data": "time&${orderedMenu}&${selectedDate}&10"
+                         "data": `time&${orderedMenu}&${selectedDate}&10`
                        },
                        "style": "primary",
                        "margin": "md"
@@ -507,7 +507,7 @@ const confirmation = (ev,menu,date,time) => {
         "contents": [
           {
             "type": "text",
-            "text": "次回予約は${splitDate[1]}月${splitDate[2]}日 ${selectedTime}時〜でよろしいですか？",
+            "text": `次回予約は${splitDate[1]}月${splitDate[2]}日 ${selectedTime}時〜でよろしいですか？`,
             "wrap": true
           },
           {
@@ -524,7 +524,7 @@ const confirmation = (ev,menu,date,time) => {
             "action": {
               "type": "postback",
               "label": "はい",
-              "data": "yes&${menu}&${date}&${time}"
+              "data": `yes&${menu}&${date}&${time}`
             }
           },
           {
@@ -532,7 +532,7 @@ const confirmation = (ev,menu,date,time) => {
             "action": {
               "type": "postback",
               "label": "いいえ",
-              "data": "no&${menu}&${date}&${time}"
+              "data": `no&${menu}&${date}&${time}`
             }
           }
         ]
