@@ -507,7 +507,7 @@ const confirmation = (ev,menu,date,time) => {
         "contents": [
           {
             "type": "text",
-            "text": "次回予約はXXXXでよろしいですか？",
+            "text": "次回予約は${splitDate[1]}月${splitDate[2]}日 ${selectedTime}時〜でよろしいですか？",
             "wrap": true
           },
           {
