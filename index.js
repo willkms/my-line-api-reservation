@@ -10,6 +10,17 @@ const config = {
 
 const client = new line.Client(config);
 
+const SpreadSheetService = require('./spreadSheetService.js')
+
+// 認証情報jsonファイルを読み込む
+const CREDIT = require('./spreadsheet-test-317513-7bd170f9c44a.json');
+
+var SpreadSheet = new SpreadSheetService(SPREADSHEET_KEY);
+SpreadSheet.authorize(CREDIT)
+
+const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
+
+
 app
    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
    .listen(PORT,()=>console.log(`Listening on ${PORT}`));
@@ -50,6 +61,12 @@ const lineBot = (req,res) => {
 
 const greeting_follow = async (ev) => {
    const profile = await client.getProfile(ev.source.userId);
+
+   await SpreadSheet.selectMaxID()
+   .then(data => data + 1)
+   .then(data => SpreadSheet.insert({id:data, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]}))
+  //  await SpreadSheet.insert({id:1, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]})
+
    return client.replyMessage(ev.replyToken,{
        "type":"text",
        "text":`${profile.displayName}さん、フォローありがとうございます\uDBC0\uDC04`
