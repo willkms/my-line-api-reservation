@@ -10,13 +10,11 @@ const config = {
 
 const client = new line.Client(config);
 
-const SpreadSheetService = require('./spreadSheetService.js')
-
-// 認証情報jsonファイルを読み込む
-const CREDIT = require('./spreadsheet-test-317513-7bd170f9c44a.json');
+const ss_client_email = process.env.SS_CLIENT_EMAIL
+const ss_private_key = process.env.SS_PRIVATE_KEY
 
 var SpreadSheet = new SpreadSheetService(SPREADSHEET_KEY);
-SpreadSheet.authorize(CREDIT)
+SpreadSheet.authorize(ss_client_email, ss_private_key)
 
 const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
 
