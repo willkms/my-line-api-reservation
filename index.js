@@ -11,11 +11,13 @@ const config = {
 
 const client = new line.Client(config);
 
-const ss_client_email = process.env.SS_CLIENT_EMAIL
-const ss_private_key = process.env.SS_PRIVATE_KEY
-
 var SpreadSheet = new SpreadSheetService(process.env.SPREADSHEET_KEY);
-SpreadSheet.authorize(ss_client_email, ss_private_key)
+
+const encrypted_path = "./encrypted_key.json"
+const decrypted_path= "./decrypted_key.json"
+const password = process.env.SS_ENCRYPT_PASSWORD
+
+SpreadSheet.authorize(encrypted_path, decrypted_path, password)
 
 const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
 

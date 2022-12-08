@@ -1,4 +1,5 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const fs = require('fs');
 
 class SpreadSheetService {
     /**
@@ -10,15 +11,22 @@ class SpreadSheetService {
     }
     /**
      * サービスアカウントを用いて認証を行う
-     * @param {*} ss_client_email
-     * @param {*} ss_private_key 
+     * @param {*} encrypted_path
+     * @param {*} decrypted_path
+     * @param {*} password
      */
-    async authorize(ss_client_email, ss_private_key) {
+    async authorize(encrypted_path, decrypted_path, password) {
+
+        const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
+        const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
+        
+        fs.writeFileSync(decrypted_path, decryptedKey, () => {})
+        const credit = fs.readFileSync(decrypted_path, "utf8")
+        fs.unlinkSync(decrypted_path)
+
         await this.doc.useServiceAccountAuth({
-            client_email: ss_client_email,
-            private_key: ss_private_key,
-            // client_email: credit.client_email,
-            // private_key: credit.private_key,
+            client_email: credit.client_email,
+            private_key: credit.private_key,
         });
     }
     /**

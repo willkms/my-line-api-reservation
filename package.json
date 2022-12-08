@@ -9,12 +9,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node stest.js"
+    "test": "node test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@line/bot-sdk": "^7.5.2",
+    "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "google-spreadsheet": "3.3.0"
   }
