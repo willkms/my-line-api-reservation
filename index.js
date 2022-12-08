@@ -17,7 +17,7 @@ const encrypted_path = "./encrypted_key.json"
 const decrypted_path= "./decrypted_key.json"
 const password = process.env.SS_ENCRYPT_PASSWORD
 
-const credit = encrypt_json_key(encrypted_path, decrypted_path, password)
+const credit = SpreadSheet.encrypt_json_key(encrypted_path, decrypted_path, password)
 SpreadSheet.authorize(credit)
 
 const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
