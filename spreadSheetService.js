@@ -11,12 +11,12 @@ class SpreadSheetService {
         this.doc = new GoogleSpreadsheet(spreadsheetKey);
     }
     /**
-     * サービスアカウントを用いて認証を行う
+     * サービスアカウントの復号化
      * @param {*} encrypted_path
      * @param {*} decrypted_path
      * @param {*} password
      */
-    async authorize(encrypted_path, decrypted_path, password) {
+     encrypt_json_key(encrypted_path, decrypted_path, password) {
 
         const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
         const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
@@ -24,6 +24,14 @@ class SpreadSheetService {
         fs.writeFileSync(decrypted_path, decryptedKey, () => {})
         const credit = fs.readFileSync(decrypted_path, "utf8")
         fs.unlinkSync(decrypted_path)
+
+        return credit
+    }
+    /**
+     * サービスアカウントを用いて認証を行う
+     * @param {*} credit
+     */
+    async authorize(credit) {
 
         await this.doc.useServiceAccountAuth({
             client_email: credit.client_email,
