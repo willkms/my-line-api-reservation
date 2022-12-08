@@ -16,16 +16,25 @@ class SpreadSheetService {
      * @param {*} decrypted_path
      * @param {*} password
      */
-     encrypt_json_key(encrypted_path, decrypted_path, password) {
+    encrypt_json_key(encrypted_path, decrypted_path, password) {
 
-        const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
-        const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
-        
-        fs.writeFileSync(decrypted_path, decryptedKey, () => {})
-        // const credit = fs.readFileSync(decrypted_path, "utf8")
-        // fs.unlinkSync(decrypted_path)
+        // const encryptedKey = fs.readFile(encrypted_path, "utf8")
 
-        // return credit
+
+        fs.readFile(encrypted_path, "utf8")
+        .then((data) => {
+            return crypto.AES.decrypt(data, password).toString(crypto.enc.Utf8)
+        })
+        .then((data) => {
+            return fs.writeFile(decrypted_path, data)
+        })
+        .then(() => {
+            console.log("OK");
+        })
+        .catch((error) => {
+            console.log('error');
+        });
+
     }
     /**
      * サービスアカウントを用いて認証を行う
