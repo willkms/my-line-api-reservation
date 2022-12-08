@@ -22,21 +22,22 @@ class SpreadSheetService {
         const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
         
         fs.writeFileSync(decrypted_path, decryptedKey, () => {})
-        const credit = fs.readFileSync(decrypted_path, "utf8")
-        fs.unlinkSync(decrypted_path)
+        // const credit = fs.readFileSync(decrypted_path, "utf8")
+        // fs.unlinkSync(decrypted_path)
 
-        return credit
+        // return credit
     }
     /**
      * サービスアカウントを用いて認証を行う
      * @param {*} credit
      */
-    async authorize(credit) {
+    async authorize(credit, decrypted_path) {
 
         await this.doc.useServiceAccountAuth({
             client_email: credit.client_email,
             private_key: credit.private_key,
-        });
+        })
+        .then(fs.unlinkSync(decrypted_path))
     }
     /**
      * 行データを返す
