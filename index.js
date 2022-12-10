@@ -19,7 +19,7 @@ const encrypted_path = "./encrypted_key.json"
 const decrypted_path= "./decrypted_key.json"
 const password = process.env.SS_ENCRYPT_PASSWORD
 
-encrypt_json_key(encrypted_path, decrypted_path, password) {
+function encrypt_json_key(encrypted_path, decrypted_path, password) {
 
   const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
   const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
