@@ -34,7 +34,10 @@ class SpreadSheetService {
             private_key: credit.private_key,
         })
 
-        fs.unlink(credit, () => {})
+        fs.unlink(credit, (err) => {
+            if (err) throw err;
+            console.log('ファイルを削除しました')
+        })
 
     }
     /**
