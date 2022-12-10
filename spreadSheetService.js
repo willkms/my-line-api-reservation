@@ -25,16 +25,18 @@ class SpreadSheetService {
     // }
     /**
      * サービスアカウントを用いて認証を行う
-     * @param {*} credit
+     * @param {*} decrypted_path
      */
-    async authorize(credit) {
+    async authorize(decrypted_path) {
+
+        const credit = require(decrypted_path)
 
         await this.doc.useServiceAccountAuth({
             client_email: credit.client_email,
             private_key: credit.private_key,
         })
 
-        fs.unlink(credit, (err) => {
+        fs.unlink(decrypted_path, (err) => {
             if (err) throw err;
             console.log('ファイルを削除しました')
         })

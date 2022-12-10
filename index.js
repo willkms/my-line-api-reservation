@@ -28,8 +28,7 @@ function encrypt_json_key(encrypted_path, decrypted_path, password) {
 }
 
 encrypt_json_key(encrypted_path, decrypted_path, password)
-const credit = require(decrypted_path)
-SpreadSheet.authorize(credit)
+SpreadSheet.authorize(decrypted_path)
 
 const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
 
