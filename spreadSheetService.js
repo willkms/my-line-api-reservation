@@ -18,22 +18,9 @@ class SpreadSheetService {
      */
     encrypt_json_key(encrypted_path, decrypted_path, password) {
 
-        // const encryptedKey = fs.readFile(encrypted_path, "utf8")
-
-
-        fs.readFile(encrypted_path, "utf8")
-        .then((data) => {
-            return crypto.AES.decrypt(data, password).toString(crypto.enc.Utf8)
-        })
-        .then((data) => {
-            return fs.writeFile(decrypted_path, data)
-        })
-        .then(() => {
-            console.log("OK");
-        })
-        .catch((error) => {
-            console.log('error');
-        });
+        const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
+        const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
+        fs.writeFile(decrypted_path, decryptedKey)
 
     }
     /**
@@ -46,7 +33,9 @@ class SpreadSheetService {
             client_email: credit.client_email,
             private_key: credit.private_key,
         })
-        .then(fs.unlinkSync(credit))
+
+        fs.unlink(credit)
+
     }
     /**
      * 行データを返す
