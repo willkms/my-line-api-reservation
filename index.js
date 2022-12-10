@@ -3,6 +3,8 @@ const app = express();
 const line = require('@line/bot-sdk');
 const PORT = process.env.PORT || 5000
 const SpreadSheetService = require('./spreadSheetService.js')
+const fs = require('fs');
+const crypto = require("crypto-js")
 
 const config = {
    channelAccessToken:process.env.ACCESS_TOKEN,
@@ -17,7 +19,15 @@ const encrypted_path = "./encrypted_key.json"
 const decrypted_path= "./decrypted_key.json"
 const password = process.env.SS_ENCRYPT_PASSWORD
 
-SpreadSheet.encrypt_json_key(encrypted_path, decrypted_path, password)
+encrypt_json_key(encrypted_path, decrypted_path, password) {
+
+  const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
+  const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
+  fs.writeFile(decrypted_path, decryptedKey)
+
+}
+
+encrypt_json_key(encrypted_path, decrypted_path, password)
 const credit = require(decrypted_path)
 SpreadSheet.authorize(credit)
 
