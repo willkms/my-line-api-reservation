@@ -23,7 +23,7 @@ function encrypt_json_key(encrypted_path, decrypted_path, password) {
 
   const encryptedKey = fs.readFileSync(encrypted_path, "utf8")
   const decryptedKey = crypto.AES.decrypt(encryptedKey, password).toString(crypto.enc.Utf8)
-  fs.writeFile(decrypted_path, decryptedKey)
+  fs.writeFileSync(decrypted_path, decryptedKey)
 
 }
 
