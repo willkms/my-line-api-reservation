@@ -31,7 +31,8 @@ encrypt_json_key(encrypted_path, decrypted_path, password)
 SpreadSheet.authorize(decrypted_path)
 
 const INITIAL_TREAT = [20,10,40,15,30,15,10];  //施術時間初期値
-
+const MENU = ['カット','シャンプー','カラーリング','ヘッドスパ','マッサージ＆スパ','眉整え','顔そり'];
+const WEEK = [ "日", "月", "火", "水", "木", "金", "土" ];
 
 app
    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
@@ -91,6 +92,15 @@ const handleMessageEvent = async (ev) => {
    
    if(text === '予約する'){
       orderChoice(ev);
+  }else if(text === '予約確認'){
+    const nextReservation = await checkNextReservation(ev);
+    const startTimestamp = nextReservation[0].starttime;
+    const date = dateConversion(startTimestamp);
+    const menu = MENU[parseInt(nextReservation[0].menu)];
+    return client.replyMessage(ev.replyToken,{
+      "type":"text",
+      "text":`次回予約は${date}、${menu}でお取りしてます\uDBC0\uDC22`
+    });
   }else{
       return client.replyMessage(ev.replyToken,{
           "type":"text",
@@ -662,3 +672,39 @@ const confirmation = (ev,menu,date,time) => {
    }
 
 
+   const checkNextReservation = (ev) => {
+    return new Promise((resolve,reject)=>{
+      const id = ev.source.userId;
+      const nowTime = new Date().getTime();
+
+      SpreadSheet.select(1, row => row)
+        .then(res=>{
+          console.log(res);
+          if(res.length){
+            const nextReservation = res.filter(object1=>{
+              return object1.line_uid === id;
+            })
+            .filter(object2=>{
+              return parseInt(object2.starttime) >= nowTime;
+            });
+            console.log('nextReservation:',nextReservation);
+            resolve(nextReservation);
+          }else{
+            resolve([]);
+          }
+        })
+        .catch(e=>console.log(e));
+   
+    });
+   }
+
+
+   const dateConversion = (timestamp) => {
+    const d = new Date(parseInt(timestamp));
+    const month = d.getMonth()+1;
+    const date = d.getDate();
+    const day = d.getDay();
+    const hour = ('0' + (d.getHours()+9)).slice(-2);
+    const min = ('0' + d.getMinutes()).slice(-2);
+    return `${month}月${date}日(${WEEK[day]}) ${hour}:${min}`;
+   }
