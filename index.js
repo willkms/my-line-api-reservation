@@ -593,9 +593,11 @@ const confirmation = (ev,menu,date,time) => {
     return new Promise((resolve,reject)=>{
       console.log('その2');
 
-      SpreadSheet.select(row => row. id == id)
+      SpreadSheet.select(row => row. line_uid == id)
         .then(res=>{
           console.log('その3');
+          console.log(res);
+          console.log(res.rows);
           if(res.rows.length){
             const info = res.rows[0];
             const treatArray = [info.cuttime,info.shampootime,info.colortime,info.spatime,INITIAL_TREAT[4],INITIAL_TREAT[5],INITIAL_TREAT[6]];
