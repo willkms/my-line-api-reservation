@@ -593,7 +593,7 @@ const confirmation = (ev,menu,date,time) => {
     return new Promise((resolve,reject)=>{
       console.log('その2');
 
-      SpreadSheet.select(row => row. line_uid == id)
+      SpreadSheet.select(row => row. id == id)
         .then(res=>{
           console.log('その3');
           if(res.rows.length){
