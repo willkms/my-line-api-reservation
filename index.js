@@ -74,7 +74,7 @@ const lineBot = (req,res) => {
 const greeting_follow = async (ev) => {
    const profile = await client.getProfile(ev.source.userId);
 
-   await SpreadSheet.selectMaxID()
+   await SpreadSheet.selectMaxID(0)
    .then(data => data + 1)
    .then(data => SpreadSheet.insert({id:data, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]}))
   //  await SpreadSheet.insert({id:1, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]})
@@ -303,6 +303,33 @@ const handlePostbackEvent = async (ev) => {
       const endTimestamp = startTimestamp + treatTime*60*1000;
       console.log('その4');
       console.log('endTime:',endTimestamp);
+
+      SpreadSheet.selectMaxID(1)
+      .then(data => data + 1)
+      .then(data => SpreadSheet.insert({id:data, line_uid:ev.source.userId, name:profile.displayName, schedule_date: selectedDate, start_time: startTimestamp, end_time: endTimestamp, menu: orderedMenu}))
+      .then(data =>{
+        console.log('データ格納成功！');
+        client.replyMessage(ev.replyToken,{
+          "type":"text",
+          "text":"予約が完了しました。"
+        });
+      })
+      .catch(e=>console.log(e));
+
+      // const insertQuery = {
+      //   text:'INSERT INTO reservations (line_uid, name, scheduledate, starttime, endtime, menu) VALUES($1,$2,$3,$4,$5,$6);',
+      //   values:[ev.source.userId,profile.displayName,selectedDate,startTimestamp,endTimestamp,orderedMenu]
+      // };
+      // connection.query(insertQuery)
+      //   .then(res=>{
+      //     console.log('データ格納成功！');
+      //     client.replyMessage(ev.replyToken,{
+      //       "type":"text",
+      //       "text":"予約が完了しました。"
+      //     });
+      //   })
+      //   .catch(e=>console.log(e));
+
   }else if(splitData[0] === 'no'){
     // あとで何か入れる
   }
@@ -593,7 +620,7 @@ const confirmation = (ev,menu,date,time) => {
     return new Promise((resolve,reject)=>{
       console.log('その2');
 
-      SpreadSheet.select(row => row. line_uid == id)
+      SpreadSheet.select(0, row => row. line_uid == id)
         .then(res=>{
           console.log('その3');
           console.log(res);

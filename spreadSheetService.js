@@ -64,8 +64,8 @@ class SpreadSheetService {
      * データを取得する
      * @param {*} callBack 
      */
-    async select(callBack) {
-        const rows = await this.getRows(0)
+    async select(index, callBack) {
+        const rows = await this.getRows(index)
         const data = []
         for (const row of rows) {
             if (callBack(row)) {
@@ -79,8 +79,8 @@ class SpreadSheetService {
      * データ内の最大IDを取得する
      * @param {*} なし
      */
-     async selectMaxID() {
-        const rows = await this.getRows(0)
+     async selectMaxID(index) {
+        const rows = await this.getRows(index)
         const data = []
         for (const row of rows) {
             data.push(parseInt(row.id))
