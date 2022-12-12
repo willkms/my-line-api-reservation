@@ -597,10 +597,10 @@ const confirmation = (ev,menu,date,time) => {
         .then(res=>{
           console.log('その3');
           console.log(res);
-          console.log(res.rows);
-          if(res.rows.length){
-            const info = res.rows[0];
-            const treatArray = [info.cuttime,info.shampootime,info.colortime,info.spatime,INITIAL_TREAT[4],INITIAL_TREAT[5],INITIAL_TREAT[6]];
+          // console.log(res.rows);
+          if(res.length){
+            const info = res[0];
+            const treatArray = [info.cut_time,info.shampoo_time,info.color_time,info.spa_time,INITIAL_TREAT[4],INITIAL_TREAT[5],INITIAL_TREAT[6]];
             const menuNumber = parseInt(menu);
             const treatTime = treatArray[menuNumber];
             resolve(treatTime);
