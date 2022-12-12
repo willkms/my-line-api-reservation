@@ -76,7 +76,7 @@ const greeting_follow = async (ev) => {
 
    await SpreadSheet.selectMaxID(0)
    .then(data => data + 1)
-   .then(data => SpreadSheet.insert({id:data, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]}))
+   .then(data => SpreadSheet.insert(0, {id:data, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]}))
   //  await SpreadSheet.insert({id:1, line_uid:ev.source.userId, display_name:profile.displayName, timestamp:ev.timestamp, cut_time:INITIAL_TREAT[0], shampoo_time:INITIAL_TREAT[1], color_time:INITIAL_TREAT[2], spa_time:INITIAL_TREAT[3]})
 
    return client.replyMessage(ev.replyToken,{
@@ -306,7 +306,7 @@ const handlePostbackEvent = async (ev) => {
 
       SpreadSheet.selectMaxID(1)
       .then(data => data + 1)
-      .then(data => SpreadSheet.insert({id:data, line_uid:ev.source.userId, name:profile.displayName, schedule_date: selectedDate, start_time: startTimestamp, end_time: endTimestamp, menu: orderedMenu}))
+      .then(data => SpreadSheet.insert(1, {id:data, line_uid:ev.source.userId, name:profile.displayName, schedule_date: selectedDate, start_time: startTimestamp, end_time: endTimestamp, menu: orderedMenu}))
       .then(data =>{
         console.log('データ格納成功！');
         client.replyMessage(ev.replyToken,{

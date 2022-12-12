@@ -55,9 +55,9 @@ class SpreadSheetService {
      * 行を追加する
      * @param {*} value 
      */
-    async insert(value) {
+    async insert(index, value) {
         await this.doc.loadInfo(); 
-        const sheet = this.doc.sheetsByIndex[0]
+        const sheet = this.doc.sheetsByIndex[index]
         return await sheet.addRow(value);
     }
     /**
