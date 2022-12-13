@@ -94,7 +94,7 @@ const handleMessageEvent = async (ev) => {
       orderChoice(ev);
   }else if(text === '予約確認'){
     const nextReservation = await checkNextReservation(ev);
-    const startTimestamp = nextReservation[0].starttime;
+    const startTimestamp = nextReservation[0].start_time;
     const date = dateConversion(startTimestamp);
     const menu = MENU[parseInt(nextReservation[0].menu)];
     return client.replyMessage(ev.replyToken,{
