@@ -70,7 +70,13 @@ class SpreadSheetService {
         for (const row of rows) {
             if (callBack(row)) {
                 // data.push({id: row.id, name: row.name, age:row.age})
-                data.push({id:row.id, line_uid:row.line_uid, display_name:row.display_name, timestamp:row.timestamp, cut_time:row.cut_time, shampoo_time:row.shampoo_time, color_time:row.color_time, spa_time:row.spa_time})
+
+                if(index == 0){
+                    data.push({id:row.id, line_uid:row.line_uid, display_name:row.display_name, timestamp:row.timestamp, cut_time:row.cut_time, shampoo_time:row.shampoo_time, color_time:row.color_time, spa_time:row.spa_time})
+                }else if(index == 1){
+                    data.push({id:row.id, line_uid:row.line_uid, name:row.name, schedule_date:row.schedule_date, start_time:row.start_time, end_time:row.end_time, menu:row.menu})
+                }
+                
             }
         }
         return data
