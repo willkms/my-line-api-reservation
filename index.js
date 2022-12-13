@@ -685,7 +685,7 @@ const confirmation = (ev,menu,date,time) => {
               return object1.line_uid === id;
             })
             .filter(object2=>{
-              return parseInt(object2.starttime) >= nowTime;
+              return parseInt(object2.start_time) >= nowTime;
             });
             console.log('nextReservation:',nextReservation);
             resolve(nextReservation);
