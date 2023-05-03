@@ -32,7 +32,7 @@ SpreadSheet.authorize(decrypted_path)
 
 app
    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
-   .listen(PORT,()=>console.log(`Listening on ${PORT}`));
+   .listen(PORT,()=>console.log(`Listening on ${PORT}`))
    .use('/liff', express.static(__dirname + '/liff'));
 
 const lineBot = (req,res) => {
