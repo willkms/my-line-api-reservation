@@ -46,7 +46,7 @@ app.post('/liff/confirm', function(req, res, next) {
   console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
-      res.render('./confirm.html', 
+      res.render('./confirm.ejs', 
           {
               name: input_name,
               date: input_date
