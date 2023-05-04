@@ -43,7 +43,7 @@ app.set('view engine', 'ejs');
 app.set('/liff', __dirname + '/liff');
 
 app.get('/', (req, res) => {
-  res.render('./index.ejs');
+  res.render('./views/index.ejs');
 });
 
 app.post('/confirm', function(req, res, next) {
