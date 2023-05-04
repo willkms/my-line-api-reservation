@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/liff', express.static(__dirname + '/liff'));
 
-app.post('/liff/confirm', function(req, res, next) {
+app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
   console.log(req.body)
   var input_name = req.body['name'];
