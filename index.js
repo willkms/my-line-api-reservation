@@ -35,22 +35,18 @@ app
    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
    .listen(PORT,()=>console.log(`Listening on ${PORT}`));
 
-// テンプレートエンジンの指定
-app.set("view engine", "ejs");
-
-app.set('views', __dirname + '/views')
 
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/liff', express.static(__dirname + '/liff'));
+app.use('/views', express.static(__dirname + '/views'));
 
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
   console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
-      res.render('./views/confirm.ejs', 
+      res.render('./confirm.ejs', 
           {
               name: input_name,
               date: input_date
