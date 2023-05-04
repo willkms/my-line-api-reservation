@@ -40,7 +40,7 @@ app
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
 // app.use('/liff', express.static(__dirname + '/liff'));
-app.set('/liff', express.static(__dirname + '/liff'));
+app.set('/liff', __dirname + '/liff');
 
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
