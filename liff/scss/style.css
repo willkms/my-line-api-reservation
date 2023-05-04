@@ -4,21 +4,22 @@ body {
 }
 
 .form-question {
-  padding: 8px;
   border-radius: 4px;
-  margin-bottom: 0 0 24px;
+  margin: 0 0 24px;
 }
 .form-question .form-question-title {
   display: flex;
   width: 100%;
+  padding: 8px;
   background-color: #98AFD7;
 }
 .form-question .form-question-title p:first-of-type {
   width: 8em;
+  line-height: 40px;
   margin: 0 2em 0 0;
 }
 .form-question .form-question-title p:nth-of-type(2) {
-  width: 2em;
+  width: 3em;
   padding: 8px;
   background-color: #93AAD4;
 }
@@ -26,12 +27,12 @@ body {
 .form-submit {
   width: 100%;
   height: 48px;
-  background-color: #94DF84;
 }
 .form-submit input {
   display: block;
   width: 100%;
   height: 100%;
   color: #fff;
+  background-color: #94DF84;
 }
 /*# sourceMappingURL=style.css.map */
