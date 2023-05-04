@@ -36,7 +36,9 @@ app
 
 app.use('/liff', express.static(__dirname + '/liff'));
 
-app.use('/confirm', function(req, res, next) {
+app.post('/confirm', function(req, res, next) {
+  console.log('--- post() /foo called ---')
+  console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
       res.render('confirm.html', 
