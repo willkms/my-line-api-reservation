@@ -10,13 +10,14 @@ body {
 }
 .form-question .form-question-title {
   display: flex;
+  width: 100%;
   background-color: #98AFD7;
 }
-.form-question .form-question-title:first-of-type {
+.form-question .form-question-title p:first-of-type {
   width: 8em;
   margin: 0 2em 0 0;
 }
-.form-question .form-question-title:nth-of-type(2) {
+.form-question .form-question-title p:nth-of-type(2) {
   width: 2em;
   padding: 8px;
   background-color: #93AAD4;
