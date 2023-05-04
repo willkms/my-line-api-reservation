@@ -40,7 +40,7 @@ app
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
-app.use('/liff', express.static(__dirname + '/liff'));
+app.use('/liff', express.static(__dirname + '/liff/index.ejs'));
 // app.set('/liff', __dirname + '/liff');
 // app.set("liff", appRoot.resolve("src/views"));
 
