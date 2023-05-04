@@ -35,6 +35,9 @@ app
    .post('/hook',line.middleware(config),(req,res)=> lineBot(req,res))
    .listen(PORT,()=>console.log(`Listening on ${PORT}`));
 
+// テンプレートエンジンの指定
+app.set("view engine", "ejs");
+
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
