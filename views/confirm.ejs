@@ -33,6 +33,21 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <!-- LIFF Setup -->
     <script>
+      $(document).ready(function () {
+            const liffId = "1661034918-8pzaYWXE";
+            initializeLiff(liffId);
+        })
+
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
+        }
+
         function sendText(text) {
             liff.sendMessages([{
                 'type': 'text',
