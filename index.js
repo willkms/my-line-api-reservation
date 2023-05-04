@@ -61,19 +61,6 @@ app.post('/confirm', function(req, res, next) {
       );
   })
 
-  app.post('/submit', function(req, res, next) {
-    console.log('--- post() /submit called ---')
-    console.log(req.body)
-    var input_name = req.body['name'];
-    var input_date = req.body['date'];
-        res.render('confirm', 
-            {
-                name: input_name,
-                date: input_date
-            }
-        );
-    })
-
 const lineBot = (req,res) => {
    res.status(200).end();
    const events = req.body.events;
