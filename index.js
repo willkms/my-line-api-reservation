@@ -41,14 +41,14 @@ app.set("view engine", "ejs");
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/liff', express.static(__dirname + '/views'));
+app.use('/liff', express.static(__dirname + '/liff'));
 
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
   console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
-      res.render('./liff/confirm.ejs', 
+      res.render('./views/confirm.ejs', 
           {
               name: input_name,
               date: input_date
