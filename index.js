@@ -45,7 +45,7 @@ app.use('/liff', express.static(__dirname + '/liff'));
 // app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
-  res.render('./views/index.ejs');
+  res.render('./src/views/index.ejs');
 });
 
 app.post('/confirm', function(req, res, next) {
