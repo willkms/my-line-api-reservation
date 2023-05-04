@@ -6,7 +6,7 @@ const SpreadSheetService = require('./spreadSheetService.js')
 const fs = require('fs');
 const crypto = require("crypto-js")
 const bodyParser = require('body-parser')
-import appRoot from "app-root-path";
+// import appRoot from "app-root-path";
 
 const config = {
    channelAccessToken:process.env.ACCESS_TOKEN,
@@ -40,9 +40,9 @@ app
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
-// app.use('/liff', express.static(__dirname + '/liff'));
-app.set('/liff', __dirname + '/liff');
-app.set("liff", appRoot.resolve("src/views"));
+app.use('/liff', express.static(__dirname + '/liff'));
+// app.set('/liff', __dirname + '/liff');
+// app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
   res.render('./views/index.ejs');
