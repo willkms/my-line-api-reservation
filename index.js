@@ -41,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
 // app.use('/liff', express.static(__dirname + '/liff'));
 app.set('/liff', __dirname + '/liff');
+app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
   res.render('./views/index.ejs');
