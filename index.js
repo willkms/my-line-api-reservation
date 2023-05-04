@@ -38,6 +38,8 @@ app
 // テンプレートエンジンの指定
 app.set("view engine", "ejs");
 
+app.set('views', __dirname + '/views')
+
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
