@@ -42,6 +42,10 @@ app.set('view engine', 'ejs');
 // app.use('/liff', express.static(__dirname + '/liff'));
 app.set('/liff', __dirname + '/liff');
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
   console.log(req.body)
