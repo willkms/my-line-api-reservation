@@ -48,13 +48,12 @@ app.post('/confirm', function(req, res, next) {
   console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
-      res.render('confirm.ejs', 
+      res.render('./liff/confirm.ejs', 
           {
               name: input_name,
               date: input_date
           }
       );
-    next()
   })
 
 const lineBot = (req,res) => {
