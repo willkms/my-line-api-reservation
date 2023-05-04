@@ -9,21 +9,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>LIFF EXAMPLE VIEW EJS</h1>
+    <h1>LIFF EXAMPLE EJS</h1>
 
     <p>
-      入力情報の確認
+      <span id="line-name"></span> さんのTODO
     </p>
 
-    <p>名前:<%= name %></p>
-    <p>日付:<%= date %></p>
-
-    <form>
-      <input type="text" name="name" value=<%= name %>>
-      <input type="date" name="date" value=<%= date %>>
-      <input type="submit" value="送信する">
+    <form action="/confirm" method="post">
+        <input type="text" name="name">
+        <input type="date" name="date">
+        <input type="submit" value="送信する">
     </form>
 
+    <form>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -33,6 +31,7 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <!-- LIFF Setup -->
     <script>
+        
         function sendText(text) {
             liff.sendMessages([{
                 'type': 'text',
@@ -50,12 +49,16 @@
         $(function () {
             $('form').submit(function () {
                 const name    = $('input[name="name"]').val();
-                const date = $('input[name="date"]').val();
-                const msg = `${name}\n${date}\n`;
+                const udetate = $('input[name="udetate"]').val();
+                const fukkin  = $('input[name="fukkin"]').val();
+                const haikin  = $('input[name="haikin"]').val();
+                const sukuwat = $('input[name="sukuwat"]').val();
+                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
                 sendText(msg);
                 return false;
             });
         });
+
 
     </script>
 </body>

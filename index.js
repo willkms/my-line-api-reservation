@@ -40,8 +40,8 @@ app
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
-// app.use('/liff', express.static(__dirname + '/liff'));
-app.set('/liff', __dirname + '/liff');
+app.use('/liff', express.static(__dirname + '/liff'));
+// app.set('/liff', __dirname + '/liff');
 // app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
@@ -60,6 +60,19 @@ app.post('/confirm', function(req, res, next) {
           }
       );
   })
+
+  app.post('/submit', function(req, res, next) {
+    console.log('--- post() /submit called ---')
+    console.log(req.body)
+    var input_name = req.body['name'];
+    var input_date = req.body['date'];
+        res.render('confirm', 
+            {
+                name: input_name,
+                date: input_date
+            }
+        );
+    })
 
 const lineBot = (req,res) => {
    res.status(200).end();
