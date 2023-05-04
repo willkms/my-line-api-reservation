@@ -6,6 +6,7 @@ const SpreadSheetService = require('./spreadSheetService.js')
 const fs = require('fs');
 const crypto = require("crypto-js")
 const bodyParser = require('body-parser')
+import appRoot from "app-root-path";
 
 const config = {
    channelAccessToken:process.env.ACCESS_TOKEN,
