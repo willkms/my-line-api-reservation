@@ -45,7 +45,7 @@ app.use('/liff', express.static(__dirname + '/liff'));
 // app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
-  res.render('./src/views/index.ejs');
+  res.render('index');
 });
 
 app.post('/confirm', function(req, res, next) {
@@ -53,7 +53,7 @@ app.post('/confirm', function(req, res, next) {
   console.log(req.body)
   var input_name = req.body['name'];
   var input_date = req.body['date'];
-      res.render('./confirm.ejs', 
+      res.render('confirm', 
           {
               name: input_name,
               date: input_date
