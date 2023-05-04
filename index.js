@@ -41,7 +41,7 @@ app.set("view engine", "ejs");
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/liff', express.static(__dirname + '/liff'));
+app.use('/liff', express.static(__dirname + '/views'));
 
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
