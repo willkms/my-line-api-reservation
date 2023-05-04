@@ -36,7 +36,7 @@ app
 
 app.use('/liff', express.static(__dirname + '/liff'));
 
-app.post('/confirm', function(req, res) {
+app.use('/confirm', function(req, res, next) {
   var input_name = req.body['name'];
   var input_date = req.body['date'];
       res.render('confirm.html', 
@@ -45,6 +45,7 @@ app.post('/confirm', function(req, res) {
               date: input_date
           }
       );
+    next()
   })
 
 const lineBot = (req,res) => {
