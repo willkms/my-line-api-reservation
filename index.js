@@ -46,16 +46,15 @@ app.use('/liff', express.static(__dirname + '/liff'));
 
 app.get('/', (req, res) => {
   var today = new Date();
+  today.setMonth(today.getMonth() + 1);
   var this_year = today.getFullYear();
   var this_month = today.getMonth();
-
-  today.setMonth(today.getMonth() + 3);
 
   if(this_month < 10){
     this_month = "0" + String(this_month);
   }
 
-  this_year_month = String(this_year) + "-" + String(this_month);
+  var this_year_month = String(this_year) + "-" + String(this_month);
 
   today.setMonth(today.getMonth() + 2);
   var max_year = today.getFullYear();
@@ -65,7 +64,7 @@ app.get('/', (req, res) => {
     max_month = "0" + String(max_month);
   }
 
-  max_year_month = String(max_year) + "-" + String(max_month);
+  var max_year_month = String(max_year) + "-" + String(max_month);
 
   console.log(this_year_month);
   console.log(max_year_month);
