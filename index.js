@@ -49,13 +49,15 @@ app.get('/', (req, res) => {
   var this_year = today.getFullYear();
   var this_month = today.getMonth();
 
+  today.setMonth(today.getMonth() + 3);
+
   if(this_month < 10){
     this_month = "0" + String(this_month);
   }
 
   this_year_month = String(this_year) + "-" + String(this_month);
 
-  today.setMonth(today.getMonth() + 3);
+  today.setMonth(today.getMonth() + 2);
   var max_year = today.getFullYear();
   var max_month = today.getMonth();
 
