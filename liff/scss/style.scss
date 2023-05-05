@@ -4,60 +4,57 @@ body{
   background-color: #edf1f3;
 }
 
-form{
-  padding: 32px 0;
+a{
+  color: #000;
+  text-decoration: none;
 }
 
-.form-question{
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgb(0 0 0 / 20%);
-  margin: 0 0 24px;
-  background-color: #fff;
+input{
+  margin: 0 0 32px;
+}
 
-  &:last-of-type{
-    margin: 0;
-  }
+.calendar{
 
-  .form-question-title{
-    display: flex;
-    width: 100%;
-    padding: 8px;
-    margin: 0 0 16px;
+  border: 1px solid #000;
+  text-align: center;
 
-    p{
-      &:first-of-type{
-        width: 8em;
-        line-height: 40px;
-        font-weight: bold;
-        margin: 0 2em 0 0;
-      }
-  
-      &:nth-of-type(2){
-        width: 3em;
-        padding: 8px;
-        color: #fff;
-        margin: 0;
-        background: linear-gradient(90deg, rgba(35,88,148,1) 0%, rgba(85,120,180,1) 50%, rgba(70,170,181,1) 100%);
-      }
+  tr{
+    border-bottom: 1px solid #000;
+
+    &:last-of-type{
+      border-bottom: 0;
     }
 
   }
 
-  input{
-    margin: 0 0 16px 8px;
-  }
-}
+  th{
+    padding: 12px;
+    border-right: 1px solid #000;
+    background-color: #fff;
 
-.form-submit{
-  width: 100%;
-  height: 48px;
+    &:first-of-type{
+      background-color: rgba(232, 99, 86, 0.5);
+    }
 
-  input{
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    color: #fff;
-    background: linear-gradient(90deg, rgba(35,88,148,1) 0%, rgba(85,120,180,1) 50%, rgba(70,170,181,1) 100%);
+    &:last-of-type{
+      border-right: 0;
+      background-color: rgba(58,150,212,0.5);
+    }
   }
+
+  td{
+    padding: 12px;
+
+    &:first-of-type{
+      color: rgba(232, 99, 86, 1);
+      background-color: rgba(232, 99, 86, 0.5);
+    }
+
+    &:last-of-type{
+      border-right: 0;
+      color: rgba(58,150,212, 1);
+      background-color: rgba(58,150,212,0.5);
+    }
+  }
+
 }
