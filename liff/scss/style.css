@@ -15,7 +15,13 @@ input {
 
 .calendar {
   border: 1px solid #000;
+  margin: 0 auto;
   text-align: center;
+}
+@media (min-width: 1200px) {
+  .calendar {
+    margin: 0;
+  }
 }
 .calendar tr {
   border-bottom: 1px solid #000;
@@ -28,25 +34,35 @@ input {
   border-right: 1px solid #000;
   background-color: #fff;
 }
+@media (min-width: 768px) {
+  .calendar th {
+    padding: 36px;
+  }
+}
 .calendar th:first-of-type {
   color: rgb(232, 99, 86);
-  background-color: rgba(232, 99, 86, 0.2);
+  background-color: rgba(232, 99, 86, 0.5);
 }
 .calendar th:last-of-type {
   border-right: 0;
   color: rgb(58, 150, 212);
-  background-color: rgba(58, 150, 212, 0.2);
+  background-color: rgba(58, 150, 212, 0.5);
 }
 .calendar td {
   padding: 12px;
   border-right: 1px solid #000;
   background-color: #fff;
 }
+@media (min-width: 768px) {
+  .calendar td {
+    padding: 36px;
+  }
+}
 .calendar td:first-of-type {
-  background-color: rgba(232, 99, 86, 0.2);
+  background-color: rgba(232, 99, 86, 0.5);
 }
 .calendar td:last-of-type {
   border-right: 0;
-  background-color: rgba(58, 150, 212, 0.2);
+  background-color: rgba(58, 150, 212, 0.5);
 }
 /*# sourceMappingURL=style.css.map */

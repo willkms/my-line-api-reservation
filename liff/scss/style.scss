@@ -16,7 +16,12 @@ input{
 .calendar{
 
   border: 1px solid #000;
+  margin:  0 auto;
   text-align: center;
+
+  @media (min-width: 1200px) {
+    margin: 0;
+  }
 
   tr{
     border-bottom: 1px solid #000;
@@ -32,15 +37,19 @@ input{
     border-right: 1px solid #000;
     background-color: #fff;
 
+    @media (min-width: 768px) {
+      padding: 36px;
+    }
+
     &:first-of-type{
       color: rgba(232, 99, 86, 1);
-      background-color: rgba(232, 99, 86, 0.2);
+      background-color: rgba(232, 99, 86, 0.5);
     }
 
     &:last-of-type{
       border-right: 0;
       color: rgba(58,150,212, 1);
-      background-color: rgba(58,150,212,0.2);
+      background-color: rgba(58,150,212,0.5);
     }
   }
 
@@ -49,13 +58,17 @@ input{
     border-right: 1px solid #000;
     background-color: #fff;
 
+    @media (min-width: 768px) {
+      padding: 36px;
+    }
+
     &:first-of-type{
-      background-color: rgba(232, 99, 86, 0.2);
+      background-color: rgba(232, 99, 86, 0.5);
     }
 
     &:last-of-type{
       border-right: 0;
-      background-color: rgba(58,150,212,0.2);
+      background-color: rgba(58,150,212,0.5);
     }
   }
 
