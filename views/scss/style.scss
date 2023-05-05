@@ -1,0 +1,58 @@
+
+body{
+  font-family: "源ノ角ゴシック JP", sans-serif;
+  background-color: #edf1f3;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+input{
+  margin: 0 0 32px;
+}
+
+.calendar{
+
+  border: 1px solid #000;
+
+  tr{
+    border-bottom: 1px solid #000;
+
+    &:last-of-type{
+      border-bottom: 0;
+    }
+
+  }
+
+  th{
+    padding: 12px;
+    border-right: 1px solid #000;
+
+    &:first-of-type{
+      background-color: rgba(232, 99, 86, 0.5);
+    }
+
+    &:last-of-type{
+      border-right: 0;
+      background-color: rgba(58,150,212,0.5);
+    }
+  }
+
+  td{
+    padding: 12px;
+
+    &:first-of-type{
+      color: rgba(232, 99, 86, 1);
+      background-color: rgba(232, 99, 86, 0.5);
+    }
+
+    &:last-of-type{
+      border-right: 0;
+      color: rgba(58,150,212, 1);
+      background-color: rgba(58,150,212,0.5);
+    }
+  }
+
+}
