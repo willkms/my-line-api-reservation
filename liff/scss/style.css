@@ -29,22 +29,24 @@ input {
   background-color: #fff;
 }
 .calendar th:first-of-type {
-  background-color: rgba(232, 99, 86, 0.5);
+  color: rgb(232, 99, 86);
+  background-color: rgba(232, 99, 86, 0.2);
 }
 .calendar th:last-of-type {
   border-right: 0;
-  background-color: rgba(58, 150, 212, 0.5);
+  color: rgb(58, 150, 212);
+  background-color: rgba(58, 150, 212, 0.2);
 }
 .calendar td {
   padding: 12px;
+  border-right: 1px solid #000;
+  background-color: #fff;
 }
 .calendar td:first-of-type {
-  color: rgb(232, 99, 86);
-  background-color: rgba(232, 99, 86, 0.5);
+  background-color: rgba(232, 99, 86, 0.2);
 }
 .calendar td:last-of-type {
   border-right: 0;
-  color: rgb(58, 150, 212);
-  background-color: rgba(58, 150, 212, 0.5);
+  background-color: rgba(58, 150, 212, 0.2);
 }
 /*# sourceMappingURL=style.css.map */
