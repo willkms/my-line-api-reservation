@@ -45,7 +45,27 @@ app.use('/liff', express.static(__dirname + '/liff'));
 // app.set("liff", appRoot.resolve("src/views"));
 
 app.get('/', (req, res) => {
-  res.render('index');
+  var today = new Date();
+  var this_year = today.getFullYear();
+  var this_month = today.getMonth();
+
+  this_year_month = String(this_year) + "-" + String(this_month);
+
+  var max = today.setMonth(today.getMonth() + 3);
+  var max_year = max.getFullYear();
+  var max_month = max.getMonth();
+
+  max_year_month = String(max_year) + "-" + String(max_month);
+
+  console.log(this_year_month);
+  console.log(max_year_month);
+
+      res.render('index', 
+          {
+              this_month: this_year_month,
+              max_month: max_year_month
+          }
+      );
 });
 
 app.post('/confirm', function(req, res, next) {
