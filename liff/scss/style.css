@@ -4,10 +4,18 @@ body {
   background-color: #edf1f3;
 }
 
+form {
+  padding: 32px 0;
+}
+
 .form-question {
   border-radius: 4px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   margin: 0 0 24px;
+  background-color: #fff;
+}
+.form-question:last-of-type {
+  margin: 0;
 }
 .form-question .form-question-title {
   display: flex;
@@ -27,6 +35,9 @@ body {
   color: #fff;
   margin: 0;
   background: linear-gradient(90deg, rgb(35, 88, 148) 0%, rgb(85, 120, 180) 50%, rgb(70, 170, 181) 100%);
+}
+.form-question input {
+  margin: 0 0 16px 8px;
 }
 
 .form-submit {

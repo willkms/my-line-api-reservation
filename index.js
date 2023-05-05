@@ -51,12 +51,21 @@ app.get('/', (req, res) => {
 app.post('/confirm', function(req, res, next) {
   console.log('--- post() /confirm called ---')
   console.log(req.body)
+
+  const array_time = ["9:00～10:00", "10:00～11:00", "11:00～12:00", "13:00～14:00", "14:00～15:00", "15:00～16:00", "16:00～17:00", "17:00～18:00"]
   var input_name = req.body['name'];
+  var input_email = req.body['email'];
+  var input_tel = req.body['tel'];
   var input_date = req.body['date'];
+  var input_time = parseInt(req.body['time']);
+
       res.render('confirm', 
           {
               name: input_name,
-              date: input_date
+              email: input_email,
+              tel: input_tel,
+              date: input_date,
+              time: array_time[input_time]
           }
       );
   })
