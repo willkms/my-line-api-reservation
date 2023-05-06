@@ -21,7 +21,9 @@
     データ：<%= row1%><%= row2%><%= row3%>
 
     <% data.forEach(function (value, key) { %>
-      <p><%= key %>: <%= value %></p>
+      <% data[key].forEach(function (value_in, key_in) { %>
+        <p><%= key_in %>: <%= value_in %></p>
+      <% }); %>
     <% }); %>
 
     <table class="calendar">
