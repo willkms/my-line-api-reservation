@@ -65,4 +65,33 @@ input {
   border-right: 0;
   background-color: rgba(58, 150, 212, 0.5);
 }
+
+#calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+#calendar section {
+  margin: 10px;
+}
+#calendar h1 {
+  font-size: 18px;
+}
+#calendar table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+#calendar td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+}
+#calendar td:first-child {
+  color: red;
+}
+#calendar td:last-child {
+  color: royalblue;
+}
+#calendar td.is-disabled {
+  color: #ccc;
+}
 /*# sourceMappingURL=style.css.map */
