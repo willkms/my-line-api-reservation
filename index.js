@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
   console.log(this_year_month);
   console.log(max_year_month);
 
-  SpreadSheet.select(2, row => row)
+  SpreadSheet.select(2, row => row, id >= 1)
   .then(data => console.log(data))
 
       res.render('index', 
