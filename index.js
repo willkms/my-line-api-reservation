@@ -5,7 +5,8 @@ const PORT = process.env.PORT || 5000
 const SpreadSheetService = require('./spreadSheetService.js')
 const fs = require('fs');
 const crypto = require("crypto-js")
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { resolve } = require('path');
 // import appRoot from "app-root-path";
 
 const config = {
@@ -70,8 +71,8 @@ app.get('/', (req, res) => {
   console.log(max_year_month);
 
 
-    SpreadSheet.select(2, row => row)
-    .then(data => console.log(data))
+    data = SpreadSheet.select(2, row => row)
+    .then(data => resolve(data))
       
 
       res.render('index', 
