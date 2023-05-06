@@ -166,9 +166,9 @@ const handleMessageEvent = async (ev) => {
 
       var name = text.split("\n")[0];
       var email = text.split("\n")[1];
-      var tel = text.split("\n")[2];
-      var date = text.split("\n")[3];
-      var time = text.split("\n")[4];
+      var tel = String(text.split("\n")[2]);
+      var date = String(text.split("\n")[3]);
+      var time = String(text.split("\n")[4]);
 
       await SpreadSheet.selectMaxID(2)
       .then(data => data + 1)
