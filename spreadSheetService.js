@@ -89,7 +89,7 @@ class SpreadSheetService {
         return new Promise((resolve,reject) => {
             // this.useServiceAccountAuth(credentials, function(err){
                 //sheetデータの取得
-                this.getInfo(function(err, data){
+                this.doc.getInfo(function(err, data){
                     sheet = data;
                     //取得したsheetの中に自分の取得したいシート名があるかチェック
                     for(var i in sheet.worksheets) {
