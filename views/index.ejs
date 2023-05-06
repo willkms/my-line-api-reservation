@@ -20,8 +20,11 @@
 
     データ：<%= row1%><%= row2%><%= row3%>
 
-    <% for (var item of data) { %>
+    <% var size = data.length %>
+    <% for (var i=0; i<size; i++) { %>
+      <% for (var item of data[i]) { %>
         <p> <%= item%></p>
+      <% } %>
     <% } %>
 
     <table class="calendar">
