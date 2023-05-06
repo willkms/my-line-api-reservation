@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
 
   console.log(this_year_month);
   console.log(max_year_month);
-  console.log(selectSync())
+  console.log(SpreadSheet.selectSync())
 
   
       
