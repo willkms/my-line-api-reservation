@@ -164,6 +164,12 @@ const handleMessageEvent = async (ev) => {
     });
   }else{
 
+      var name = text.split("\n")[0];
+      var email = text.split("\n")[1];
+      var tel = text.split("\n")[2];
+      var date = text.split("\n")[3];
+      var time = text.split("\n")[4];
+
       await SpreadSheet.selectMaxID(2)
       .then(data => data + 1)
       .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
