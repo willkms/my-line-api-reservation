@@ -22,9 +22,9 @@
 
     <% var size = data.length %>
     <% for (var i=0; i<size; i++) { %>
-      <% for (var item of data[i]) { %>
-        <p> <%= item%></p>
-      <% } %>
+      <% data[i].forEach(function (value, key) { %>
+        <p><%= key %>: <%= value %></p>
+      <% }); %>
     <% } %>
 
     <table class="calendar">
