@@ -172,7 +172,7 @@ const handleMessageEvent = async (ev) => {
 
       await SpreadSheet.selectMaxID(2)
       .then(data => data + 1)
-      .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
+      .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, schedule_date:date, start_time:time}))
  
 
       return client.replyMessage(ev.replyToken,{
