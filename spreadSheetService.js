@@ -87,7 +87,7 @@ class SpreadSheetService {
     //データ取得関数
     selectSync(){
         return new Promise((resolve,reject) => {
-            this.useServiceAccountAuth(credentials, function(err){
+            // this.useServiceAccountAuth(credentials, function(err){
                 //sheetデータの取得
                 this.getInfo(function(err, data){
                     sheet = data;
@@ -108,7 +108,7 @@ class SpreadSheetService {
                         };
                     };
                 });
-            });
+            // });
         })
     }
 
