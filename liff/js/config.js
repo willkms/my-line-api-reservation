@@ -2,7 +2,7 @@
 
 $(window).on('load', function (){
 
-  $("section").addClass("fadein");
+  console.log("読み込み")
 
 });
 
