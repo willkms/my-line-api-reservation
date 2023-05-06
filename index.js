@@ -70,21 +70,34 @@ app.get('/', (req, res) => {
   console.log(this_year_month);
   console.log(max_year_month);
   
-  //データ格納用配列の用意
-  var array =[];
+  // //データ格納用配列の用意
+  // var array =[];
+
+  SpreadSheet.select(2, row => row)
+  .then(
+    data =>  {
+        res.render('index', 
+              {
+                  this_month: this_year_month,
+                  max_month: max_year_month,
+                  data: data
+              }
+          );
+      }
+  )
 
   //関数実行順宣言
-  SpreadSheet.get_function()
-  .then(SpreadSheet.use_function(array))
-  .then((response) => {
-    res.render('index', 
-          {
-              this_month: this_year_month,
-              max_month: max_year_month,
-              data: array
-          }
-      );
-  });
+  // SpreadSheet.get_function()
+  // .then(SpreadSheet.use_function(array))
+  // .then((response) => {
+  //   res.render('index', 
+  //         {
+  //             this_month: this_year_month,
+  //             max_month: max_year_month,
+  //             data: array
+  //         }
+  //     );
+  // });
   
     
 });
