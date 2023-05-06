@@ -77,9 +77,9 @@ app.get('/', (req, res) => {
   .then(
     data =>  {
 
-        row1 = data[0];
-        row2 = data[1];
-        row3 = data[2];
+        row1 = data[0][0];
+        row2 = data[0][1];
+        row3 = data[1][0];
         console.log(data);
         console.log(row1);
 
