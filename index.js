@@ -69,13 +69,10 @@ app.get('/', (req, res) => {
   console.log(this_year_month);
   console.log(max_year_month);
 
-  return new Promise((resolve,reject)=>{
 
-      SpreadSheet.select(1, row => row)
-      .then(data => console.log(data))
-      .catch(e=>console.log(e));
-   
-    });
+    SpreadSheet.select(1, row => row)
+    .then(data => console.log(data))
+      
 
       res.render('index', 
           {
