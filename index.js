@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
 
 
     var data = SpreadSheet.select(2, row => row)
-    .then(data => {return data;})
+    .then(resolve(row))
       
 
       res.render('index', 
