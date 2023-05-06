@@ -163,6 +163,12 @@ const handleMessageEvent = async (ev) => {
       "text":`次回予約は${date}、${menu}でお取りしてます\uDBC0\uDC22`
     });
   }else{
+
+      await SpreadSheet.selectMaxID(2)
+      .then(data => data + 1)
+      .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
+ 
+
       return client.replyMessage(ev.replyToken,{
           "type":"text",
           "text":`${profile.displayName}さん、今${text}って言いました？`
