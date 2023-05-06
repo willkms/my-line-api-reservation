@@ -75,6 +75,8 @@ class SpreadSheetService {
                     data.push({id:row.id, line_uid:row.line_uid, display_name:row.display_name, timestamp:row.timestamp, cut_time:row.cut_time, shampoo_time:row.shampoo_time, color_time:row.color_time, spa_time:row.spa_time})
                 }else if(index == 1){
                     data.push({id:row.id, line_uid:row.line_uid, name:row.name, schedule_date:row.schedule_date, start_time:row.start_time, end_time:row.end_time, menu:row.menu})
+                }else if(index == 2){
+                    data.push({id:row.id, email:row.email, tel:row.tel, schedule_date:row.schedule_date, start_time:row.start_time})
                 }
                 
             }
