@@ -69,9 +69,9 @@ app.get('/', (req, res) => {
 
   console.log(this_year_month);
   console.log(max_year_month);
+  console.log(selectSync())
 
-
-    var data = SpreadSheet.select(2, row => row)
+  
       
 
       res.render('index', 

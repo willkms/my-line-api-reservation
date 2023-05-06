@@ -83,6 +83,35 @@ class SpreadSheetService {
         }
         return data
     }
+
+    //データ取得関数
+    selectSync(){
+        return new Promise((resolve,reject) => {
+            this.useServiceAccountAuth(credentials, function(err){
+                //sheetデータの取得
+                this.getInfo(function(err, data){
+                    sheet = data;
+                    //取得したsheetの中に自分の取得したいシート名があるかチェック
+                    for(var i in sheet.worksheets) {
+                        if(sheet.worksheets[i].title === '新予約テーブル') {
+                            sheet.worksheets[i].getRows(function(err, rows) {
+                                for(var i in rows) {
+                                    array.push(rows[i].id);
+                                    array.push(rows[i].name);
+                                    array.push(rows[i].email);
+                                    array.push(rows[i].tel);
+                                    array.push(rows[i].schedule_date);
+                                    array.push(rows[i].start_time);
+                                };
+                                resolve();
+                            });
+                        };
+                    };
+                });
+            });
+        })
+    }
+
     /**
      * データ内の最大IDを取得する
      * @param {*} なし
