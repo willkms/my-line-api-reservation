@@ -77,7 +77,8 @@ app.get('/', (req, res) => {
       res.render('index', 
           {
               this_month: this_year_month,
-              max_month: max_year_month
+              max_month: max_year_month,
+              data: data
           }
       );
 });
