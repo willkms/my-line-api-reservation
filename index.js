@@ -83,6 +83,7 @@ app.get('/', (req, res) => {
         row4 = data["id"]
         console.log(data);
         console.log(row1);
+        console.log(row4);
 
         res.render('index', 
               {
