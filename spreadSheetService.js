@@ -115,7 +115,7 @@ class SpreadSheetService {
     //取得データ使用関数
     use_function(passVal){
         return new Promise((resolve,reject) => {
-        console.log(array);
+        console.log(passVal);
         });
         resolve();
     };
