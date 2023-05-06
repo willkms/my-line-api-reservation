@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
     data =>  {
 
         row1 = data[0]["id"];
-        row2 = data[0]["name"];
+        row2 = data[0]["email"];
         row3 = data[1]["id"];
         console.log(data);
         console.log(row1);
@@ -87,6 +87,7 @@ app.get('/', (req, res) => {
               {
                   this_month: this_year_month,
                   max_month: max_year_month,
+                  data: data,
                   row1: row1,
                   row2: row2,
                   row3: row3

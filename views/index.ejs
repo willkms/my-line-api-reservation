@@ -20,6 +20,10 @@
 
     データ：<%= row1%><%= row2%><%= row3%>
 
+    <% data.forEach(function (value, key) { %>
+      <p><%= key %>: <%= value %></p>
+    <% }); %>
+
     <table class="calendar">
 
       <tr>
