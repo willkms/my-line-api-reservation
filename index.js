@@ -70,7 +70,16 @@ app.get('/', (req, res) => {
   console.log(this_year_month);
   console.log(max_year_month);
   console.log(SpreadSheet.selectSync())
-  data = SpreadSheet.selectSync()
+  
+  //データ格納用配列の用意
+  var array =[];
+
+  //関数実行順宣言
+  get_function()
+  .then(use_function)
+  .then((response) => {
+    console.log("all done!");
+  });
   
       
 
@@ -78,7 +87,7 @@ app.get('/', (req, res) => {
           {
               this_month: this_year_month,
               max_month: max_year_month,
-              data: data
+              data: array
           }
       );
 });

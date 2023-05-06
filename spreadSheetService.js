@@ -85,7 +85,7 @@ class SpreadSheetService {
     }
 
     //データ取得関数
-    selectSync(){
+    get_function(){
         return new Promise((resolve,reject) => {
             // this.useServiceAccountAuth(credentials, function(err){
                 //sheetデータの取得
@@ -111,6 +111,14 @@ class SpreadSheetService {
             // });
         })
     }
+
+    //取得データ使用関数
+    use_function(passVal){
+        return new Promise((resolve,reject) => {
+        console.log(array);
+        });
+        resolve();
+    };
 
     /**
      * データ内の最大IDを取得する
