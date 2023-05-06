@@ -71,6 +71,15 @@
                 const time = $('input[name="time"]').val();
                 const msg = `${name}\n${email}\n${tel}\n${date}\n${time}`;
                 sendText(msg);
+
+                (async function () {
+                    const SpreadSheetService = require('../spreadSheetService.js')
+
+                    await SpreadSheet.selectMaxID(0)
+                    .then(data => data + 1)
+                    .then(data => SpreadSheet.insert(0, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
+                }())
+
                 return false;
             });
         });
