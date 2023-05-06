@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
   console.log(max_year_month);
 
 
-    SpreadSheet.select(1, row => row)
+    SpreadSheet.select(2, row => row)
     .then(data => console.log(data))
       
 
