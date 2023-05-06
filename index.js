@@ -77,18 +77,16 @@ app.get('/', (req, res) => {
   SpreadSheet.get_function()
   .then(SpreadSheet.use_function(array))
   .then((response) => {
-    console.log("all done!");
-  });
-  
-      
-
-      res.render('index', 
+    res.render('index', 
           {
               this_month: this_year_month,
               max_month: max_year_month,
               data: array
           }
       );
+  });
+  
+    
 });
 
 app.post('/confirm', function(req, res, next) {
