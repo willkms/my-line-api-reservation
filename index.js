@@ -74,8 +74,8 @@ app.get('/', (req, res) => {
   var array =[];
 
   //関数実行順宣言
-  get_function()
-  .then(use_function)
+  SpreadSheet.get_function()
+  .then(SpreadSheet.use_function)
   .then((response) => {
     console.log("all done!");
   });
