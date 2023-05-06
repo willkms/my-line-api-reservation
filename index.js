@@ -71,7 +71,7 @@ app.get('/', (req, res) => {
 
   return new Promise((resolve,reject)=>{
 
-      SpreadSheet.select(2, row => row)
+      SpreadSheet.select(1, row => row)
       .then(data => console.log(data))
       .catch(e=>console.log(e));
    
