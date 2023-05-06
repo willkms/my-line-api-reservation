@@ -70,7 +70,6 @@
                 const date = $('input[name="date"]').val();
                 const time = $('input[name="time"]').val();
                 const msg = `${name}\n${email}\n${tel}\n${date}\n${time}`;
-                sendText(msg);
 
                 (async function () {
                     const SpreadSheetService = require('../spreadSheetService.js')
@@ -79,6 +78,8 @@
                     .then(data => data + 1)
                     .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
                 }())
+                
+                sendText(msg);
 
                 return false;
             });
