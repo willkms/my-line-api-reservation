@@ -80,6 +80,7 @@ app.get('/', (req, res) => {
         row1 = data[0]["id"];
         row2 = data[0]["email"];
         row3 = data[1]["id"];
+        row4 = data["id"]
         console.log(data);
         console.log(row1);
 
@@ -90,7 +91,8 @@ app.get('/', (req, res) => {
                   data: data,
                   row1: row1,
                   row2: row2,
-                  row3: row3
+                  row3: row3,
+                  row4: row4
               }
           );
       }
