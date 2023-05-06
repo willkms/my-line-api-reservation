@@ -76,9 +76,9 @@
 
                     await SpreadSheet.selectMaxID(2)
                     .then(data => data + 1)
-                    .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, date:date, time:time}))
+                    .then(data => SpreadSheet.insert(2, {id:data, name:name, email:email, tel:tel, schdule_date:date, start_time:time}))
                 }())
-                
+
                 sendText(msg);
 
                 return false;
