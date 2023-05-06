@@ -76,11 +76,18 @@ app.get('/', (req, res) => {
   SpreadSheet.select(2, row => row)
   .then(
     data =>  {
+
+        row1 = data[0]
+        row2 = data[1]
+        row3 = data[2]
+
         res.render('index', 
               {
                   this_month: this_year_month,
                   max_month: max_year_month,
-                  data: data
+                  row1: row1,
+                  row2: row2,
+                  row3: row3
               }
           );
       }
